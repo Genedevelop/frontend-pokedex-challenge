@@ -1,0 +1,29 @@
+<div class="backdrop" data-testid="backdrop" (click)="onBackdropClick($event)">
+  <section class="content" role="dialog" aria-modal="true" aria-label="Find pokemon">
+    <label class="search">
+      <input
+        #searchInput
+        type="search"
+        placeholder="Find pokemon"
+        aria-label="Find pokemon by name or type"
+        [value]="query()"
+        (input)="query.set(searchInput.value)"
+      />
+      <img src="assets/search.png" alt="" />
+    </label>
+
+    <div class="list">
+      @if (results.error()) {
+        <p class="status">Can't reach the card service. Is <code>npm run api</code> running?</p>
+      } @else if (results.isLoading() && !results.hasValue()) {
+        <p class="status">Loading…</p>
+      } @else {
+        @for (card of unselected(); track card.id) {
+          <app-pokemon-card [card]="card" action="add" (acted)="add($event)" />
+        } @empty {
+          <p class="status">No Pokémon found</p>
+        }
+      }
+    </div>
+  </section>
+</div>

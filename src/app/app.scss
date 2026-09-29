@@ -1,0 +1,52 @@
+@use '../theme' as *;
+
+#root {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+header h1 {
+  margin: 12px 0;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.pokedex {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  gap: 12px;
+  padding: 0 16px 60px;
+  overflow-y: auto;
+  --art-width: 115px;
+}
+
+.bottom-bar {
+  position: relative;
+  flex: none;
+  height: 60px;
+  background: $bottom-bar-background;
+  box-shadow: 0 -2px 10px $bottom-bar-box-shadow;
+}
+
+.add {
+  position: absolute;
+  left: 50%;
+  top: -40px;
+  width: 80px;
+  height: 80px;
+  transform: translateX(-50%);
+  border: 0;
+  border-radius: 50%;
+  background: $bottom-bar-background;
+  box-shadow: 0 -2px 10px $bottom-bar-box-shadow;
+  color: $bottom-bar-text-color;
+  font-family: inherit;
+  font-size: 56px;
+  line-height: 1;
+  cursor: pointer;
+}

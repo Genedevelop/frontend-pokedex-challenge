@@ -1,0 +1,21 @@
+<div id="root">
+  <header>
+    <h1>My Pokédex</h1>
+  </header>
+
+  <main class="pokedex">
+    @for (card of store.cards(); track card.id) {
+      <app-pokemon-card [card]="card" action="remove" (acted)="store.remove($event.id)" />
+    }
+  </main>
+
+  <footer class="bottom-bar">
+    <button type="button" class="add" aria-label="Add Pokémon" (click)="searchOpen.set(true)">
+      +
+    </button>
+  </footer>
+
+  @if (searchOpen()) {
+    <app-search-modal (closed)="searchOpen.set(false)" />
+  }
+</div>

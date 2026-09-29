@@ -1,0 +1,120 @@
+@use '../../theme' as *;
+
+:host {
+  display: block;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  padding: 8px;
+  background: $card-background;
+  box-shadow: 0 1px 4px $card-box-shadow;
+  transition: box-shadow 0.15s;
+
+  &:hover {
+    box-shadow: 0 2px 8px $card-box-shadow-hover;
+
+    .action {
+      opacity: 1;
+    }
+  }
+}
+
+.art {
+  flex: none;
+  width: var(--art-width, 115px);
+  aspect-ratio: 245 / 342;
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  margin: 4px 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 40px;
+}
+
+.levels {
+  margin: 0;
+  max-width: var(--tube-max, 100%);
+}
+
+.level {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+
+  dt {
+    width: 48px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  dd {
+    flex: 1;
+    margin: 0;
+  }
+}
+
+.tube {
+  height: 18px;
+  border-radius: 10px;
+  background: $level-tube-background;
+  box-shadow: 0 1px 2px $level-tube-box-shadow;
+  overflow: hidden;
+}
+
+.value {
+  height: 100%;
+  border-radius: 10px;
+  background: $level-tube-value-background;
+}
+
+.happiness {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+
+  img {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+.action {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: $color-add-button;
+  font-family: inherit;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s;
+
+  &:focus-visible {
+    opacity: 1;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}

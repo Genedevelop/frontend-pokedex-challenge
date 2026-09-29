@@ -1,0 +1,62 @@
+@use '../../theme' as *;
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  padding: 20px 30px;
+  background: $modal-outside;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: $modal-content-background;
+  box-shadow: 0 0 10px $modal-content-box-shadow;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  margin: 8px;
+  border: 1px solid $search-box-border;
+
+  input {
+    flex: 1;
+    padding: 6px 10px;
+    border: 0;
+    outline: none;
+    font-family: 'Gaegu', cursive;
+    font-size: 22px;
+
+    &::-webkit-search-cancel-button {
+      appearance: none;
+    }
+  }
+
+  img {
+    width: 20px;
+    margin-right: 10px;
+  }
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 8px 8px;
+  --art-width: 150px;
+  --tube-max: 440px;
+
+  app-pokemon-card + app-pokemon-card {
+    margin-top: 10px;
+  }
+}
+
+.status {
+  margin: 40px 0;
+  text-align: center;
+  color: #888;
+}

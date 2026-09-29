@@ -1,0 +1,41 @@
+<article class="card">
+  <img class="art" [src]="card().imageUrl" [alt]="card().name" loading="lazy" />
+
+  <div class="info">
+    <h3 class="name">{{ card().name }}</h3>
+
+    <dl class="levels">
+      @for (level of levels(); track level.label) {
+        <div class="level">
+          <dt>{{ level.label }}</dt>
+          <dd>
+            <div
+              class="tube"
+              role="meter"
+              [attr.aria-label]="level.label"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              [attr.aria-valuenow]="level.value"
+            >
+              <div class="value" [style.width.%]="level.value"></div>
+            </div>
+          </dd>
+        </div>
+      }
+    </dl>
+
+    <div class="happiness" [attr.aria-label]="'Happiness ' + stats().happiness">
+      @for (face of faces(); track $index) {
+        <img src="assets/cute.png" alt="" />
+      }
+    </div>
+  </div>
+
+  <button type="button" class="action" (click)="acted.emit(card())">
+    @if (action() === 'add') {
+      Add
+    } @else {
+      <span aria-hidden="true">X</span><span class="sr-only">Remove {{ card().name }}</span>
+    }
+  </button>
+</article>
